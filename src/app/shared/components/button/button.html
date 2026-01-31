@@ -1,0 +1,10 @@
+<button [type]="type" [disabled]="disabled || loading" [class]="buttonClasses">
+
+    <lucide-icon *ngIf="loading" name="loader-2" class="animate-spin h-4 w-4"></lucide-icon>
+
+    <i *ngIf="icon && !loading" [class]="icon"></i>
+
+    <span class="inline-flex items-center">
+        <ng-content></ng-content>
+    </span>
+</button>
