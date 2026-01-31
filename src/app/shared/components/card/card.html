@@ -1,0 +1,14 @@
+<div [class]="cardClasses">
+
+    <div class="border-b bg-gray-50/50 px-6 py-4" [class.hidden]="!hasHeader">
+        <ng-content select="[card-header]"></ng-content>
+    </div>
+
+    <div [class]="bodyPadding">
+        <ng-content></ng-content>
+    </div>
+
+    <div class="border-t bg-gray-50/50 px-6 py-4" [class.hidden]="!hasFooter">
+        <ng-content select="[card-footer]"></ng-content>
+    </div>
+</div>

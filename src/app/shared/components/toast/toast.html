@@ -1,0 +1,22 @@
+<div [class]="containerClasses">
+    <div [class]="toastClasses" class="animate-in fade-in slide-in-from-right-10 duration-300">
+        <div [class]="iconClasses">
+            <ng-container [ngSwitch]="type">
+                <lucide-icon *ngSwitchCase="'success'" name="check-circle" class="h-6 w-6"></lucide-icon>
+                <lucide-icon *ngSwitchCase="'error'" name="alert-circle" class="h-6 w-6"></lucide-icon>
+                <lucide-icon *ngSwitchCase="'info'" name="info" class="h-6 w-6"></lucide-icon>
+                <lucide-icon *ngSwitchCase="'warning'" name="alert-triangle" class="h-6 w-6"></lucide-icon>
+            </ng-container>
+        </div>
+
+        <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold">{{ type | titlecase }}</p>
+            <p class="mt-0.5 text-sm opacity-90 leading-relaxed">{{ message }}</p>
+        </div>
+
+        <button (click)="onClose()"
+            class="flex-shrink-0 ml-4 rounded-lg p-1 transition-colors hover:bg-black/5 focus:outline-none">
+            <lucide-icon name="x" class="h-5 w-5"></lucide-icon>
+        </button>
+    </div>
+</div>
