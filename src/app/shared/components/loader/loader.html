@@ -1,0 +1,13 @@
+<div [ngClass]="['flex flex-col items-center justify-center gap-2', color]">
+
+    <div *ngIf="type === 'spinner'" [class]="spinnerClasses" class="border-current"></div>
+
+    <div *ngIf="type === 'progress'" class="w-full max-w-xs bg-gray-200 rounded-full h-2 overflow-hidden">
+        <div class="bg-indigo-600 h-full transition-all duration-300 ease-out" [style.width.%]="progress"
+            [style.backgroundColor]="color.startsWith('text-') ? '' : color"></div>
+    </div>
+
+    <span *ngIf="type === 'progress'" class="text-xs font-medium text-gray-500">
+        {{ progress }}%
+    </span>
+</div>
