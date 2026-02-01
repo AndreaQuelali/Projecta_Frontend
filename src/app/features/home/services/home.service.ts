@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, delay } from 'rxjs';
-import { ProjectCard } from '../components/recent-cards/recent-cards.component';
-import { MostViewedItem } from '../components/most-viewed/most-viewed.component';
+import { ProjectCard } from '../interfaces/project-card.interface';
+import { MostViewedItem } from '../interfaces/most-viewed-item.interface';
 
 @Injectable({
     providedIn: 'root'
