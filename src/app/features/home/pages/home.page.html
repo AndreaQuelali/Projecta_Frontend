@@ -1,0 +1,33 @@
+<div class="space-y-8 p-6 animate-in fade-in duration-500">
+    <app-home-banner></app-home-banner>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div class="lg:col-span-3 space-y-6">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold text-gray-900">Proyectos Recientes</h2>
+                <button class="text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:underline">Ver
+                    todos</button>
+            </div>
+
+            <ng-container *ngIf="recentProjects$ | async as projects; else loadingTemplate">
+                <app-recent-cards [projects]="projects"></app-recent-cards>
+            </ng-container>
+        </div>
+
+        <div class="lg:col-span-1">
+            <ng-container *ngIf="mostViewed$ | async as items; else loadingListTemplate">
+                <app-most-viewed [items]="items"></app-most-viewed>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingTemplate>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let i of [1,2,3]" class="h-64 bg-gray-100 rounded-xl animate-pulse"></div>
+    </div>
+</ng-template>
+
+<ng-template #loadingListTemplate>
+    <div class="bg-white rounded-xl border border-gray-200 p-6 h-64 animate-pulse"></div>
+</ng-template>
