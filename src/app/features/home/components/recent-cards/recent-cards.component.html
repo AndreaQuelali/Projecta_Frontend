@@ -1,0 +1,33 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <app-card *ngFor="let project of projects" class="h-full hover:-translate-y-1 transition-transform duration-300">
+        <div card-header class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
+                    <lucide-icon [name]="project.icon" class="w-5 h-5"></lucide-icon>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900">{{project.title}}</h3>
+                    <p class="text-xs text-gray-500">Actualizado hace {{project.lastUpdated}}</p>
+                </div>
+            </div>
+            <app-badge [type]="project.statusType" [label]="project.status"></app-badge>
+        </div>
+
+        <p class="text-sm text-gray-600 mb-4 line-clamp-2">{{project.description}}</p>
+
+        <div card-footer class="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
+            <div class="flex -space-x-2">
+                <img *ngFor="let member of project.members" [src]="member.avatar" [alt]="member.name"
+                    class="w-6 h-6 rounded-full border-2 border-white" [title]="member.name">
+                <div *ngIf="project.membersCount > 3"
+                    class="w-6 h-6 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-[10px] text-gray-600 font-medium">
+                    +{{project.membersCount - 3}}
+                </div>
+            </div>
+            <div class="flex items-center gap-1 text-xs text-gray-500">
+                <lucide-icon name="list-checks" class="w-3.5 h-3.5"></lucide-icon>
+                <span>{{project.completedTasks}}/{{project.totalTasks}}</span>
+            </div>
+        </div>
+    </app-card>
+</div>
