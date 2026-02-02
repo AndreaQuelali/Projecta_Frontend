@@ -1,0 +1,29 @@
+<div class="p-6 space-y-6 h-full flex flex-col">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-900">Proyectos</h1>
+            <p class="text-gray-500">Gestiona y monitoriza el progreso de tus iniciativas.</p>
+        </div>
+        <button
+            class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 flex items-center gap-2 transition-colors shadow-sm">
+            <lucide-icon name="plus" class="w-5 h-5"></lucide-icon>
+            Nuevo Proyecto
+        </button>
+    </div>
+
+    <app-project-header></app-project-header>
+
+    <ng-container *ngIf="projects$ | async as projects; else loadingTemplate">
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 animate-in fade-in duration-500">
+            <app-project-card *ngFor="let project of projects" [project]="project"></app-project-card>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #loadingTemplate>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-1">
+        <div *ngFor="let i of [1,2,3,4,5,6]" class="h-64 bg-gray-100 rounded-xl animate-pulse border border-gray-200">
+        </div>
+    </div>
+</ng-template>
