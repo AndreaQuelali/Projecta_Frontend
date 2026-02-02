@@ -9,6 +9,7 @@ import { LucideAngularModule } from 'lucide-angular';
 })
 export class Card {
   @Input() borderColor: string = 'border-gray-200';
+  @Input({ transform: booleanAttribute }) border = true;
   @Input({ transform: booleanAttribute }) shadow = true;
   @Input() padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
 
@@ -27,7 +28,9 @@ export class Card {
     const base = 'bg-white rounded-xl overflow-hidden border transition-all duration-300';
     const shadowClass = this.shadow ? 'shadow-lg hover:shadow-xl' : 'shadow-none';
 
-    return `${base} ${this.borderColor} ${shadowClass}`;
+    const borderClass = this.border ? `border ${this.borderColor}` : 'border-none';
+
+    return `${base} ${borderClass} ${shadowClass}`;
   }
 
   get bodyPadding(): string {
