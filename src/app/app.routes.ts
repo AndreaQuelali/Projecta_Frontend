@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './features/home/pages/home.page';
 
 export const routes: Routes = [
     {
         path: '',
-        component: HomePage
+        loadChildren: () => import('./features/home/home.routes').then(m => m.homeRoutes)
+    },
+    {
+        path: 'projects',
+        loadChildren: () => import('./features/projects/projects.routes').then(m => m.projectsRoutes)
     },
     {
         path: '**',
